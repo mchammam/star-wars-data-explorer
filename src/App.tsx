@@ -1,13 +1,18 @@
 import { Route, Routes } from 'react-router'
+import { QueryClient, QueryClientProvider } from 'react-query'
 import FilmList from './pages/FilmList'
 import './App.css'
 
 function App() {
 
+  const queryClient = new QueryClient();
+
   return (
-    <Routes>
-      <Route path='/' element={<FilmList />} />
-    </Routes>
+    <QueryClientProvider client={queryClient}>
+      <Routes>
+        <Route path='/' element={<FilmList />} />
+      </Routes>
+    </QueryClientProvider>
   )
 }
 
