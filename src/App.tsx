@@ -1,12 +1,13 @@
-import { useState } from 'react'
+import { Route, Routes } from 'react-router'
+import FilmList from './pages/FilmList'
 import './App.css'
 
 function App() {
 
   return (
-    <div className="App">
-      
-    </div>
+    <Routes>
+      <Route path='/' element={<FilmList />} />
+    </Routes>
   )
 }
 
