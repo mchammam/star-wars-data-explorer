@@ -1,16 +1,15 @@
 import { useQuery } from 'react-query'
 import { useParams } from 'react-router'
+import PlanetSummary from '../components/PlanetSummary'
+import { getIdFromURL } from '../hooks/useGetIdFromURL'
 
 function Film() {
     const { id } = useParams()
-    const { isLoading, error, data } = useQuery('filmList', () =>
-        fetch('https://swapi.dev/api/films/' + id)
+    const { isLoading, error, data } = useQuery(`film-${id}`, () =>
+        fetch(`https://swapi.dev/api/films/${id}`)
             .then(res => res.json())
         //.then(data => console.log(data))
     )
-
-
-
 
     return (
         <div>
@@ -26,7 +25,14 @@ function Film() {
                     <div>Producer: {data.producer}</div>
                     <div>Release date: {data.release_date}</div>
                     <p> In this film there are:</p>
-                    <div>{data.planets.length} planets</div>
+                    {data.planets &&
+                        <>
+                            <div>{data.planets.length} planets</div>
+                            {data.planets.map((planetURL: string) => (
+                                <PlanetSummary id={getIdFromURL(planetURL)} />
+                            ))}
+                        </>
+                    }
                     <div>{data.species.length} species</div>
                     <div>{data.characters.length} character</div>
                     <div>{data.starships.length} starships</div>
