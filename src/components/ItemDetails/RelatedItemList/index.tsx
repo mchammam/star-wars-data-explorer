@@ -85,7 +85,8 @@ function RelatedItemList({
           </ul>
 
           <p className={styles.pagination}>
-            Showing {limit} of {ids.length}.
+            {limit !== ids.length &&
+              `Currently showing ${limit} of ${ids.length}.`}
             {limit < ids.length && (
               <small>
                 <button className="btn" onClick={handleShowMoreClick}>
