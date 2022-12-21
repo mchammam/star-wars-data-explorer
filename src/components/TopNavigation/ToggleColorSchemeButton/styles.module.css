@@ -10,7 +10,6 @@
     border: 0px solid white;
     background-color: var(--clr-default);
     color: var(--clr-on-default);
-    cursor: pointer;
 }
 
 .colorSchemeToggleBtn:hover {
@@ -36,5 +35,6 @@
 @media (min-width: 768px) {
     .colorSchemeToggleBtn {
         margin: 0.75rem 1.3rem;
+        cursor: pointer;
     }
 }

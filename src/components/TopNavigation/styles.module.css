@@ -15,7 +15,6 @@
     border: 0;
     background-color: transparent;
     color: transparent;
-    cursor: pointer;
 }
 
 .navToggleBtn[aria-expanded="true"] {
