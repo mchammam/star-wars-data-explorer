@@ -1,0 +1,12 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-inline: 1rem;
+}
+
+.page__header {
+    margin-block: 3rem;
+    text-align: center;
+    text-transform: uppercase;
+}

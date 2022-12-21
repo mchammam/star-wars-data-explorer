@@ -1,0 +1,38 @@
+.item {
+  padding: 1rem;
+  width: 17rem;
+  list-style: none;
+  border-radius: 3px;
+  border: 1px solid var(--clr-accent);
+  background-color: var(--clr-accent);
+}
+
+.item a {
+  text-decoration: none;
+}
+
+.item__title {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  height: 1.3rem;
+  width: 40%;
+  background-color: var(--clr-on-accent);
+  opacity: 0.5;
+  animation: 2s skeleton-line infinite ease-in-out;
+}
+
+.item__subtitle {
+  margin: 0;
+  height: 1.1rem;
+  width: 80%;
+  background-color: var(--clr-on-accent);
+  opacity: 0.5;
+  animation: 2s skeleton-line infinite ease-in-out;
+}
+
+@keyframes skeleton-line {
+  50% {
+    opacity: 0.5;
+    width: 0%;
+  }
+}

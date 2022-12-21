@@ -1,0 +1,16 @@
+.searchForm {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 2rem;
+}
+
+.searchInput {
+    padding: 0.5rem;
+    min-width: 17rem;
+    max-width: 35rem;
+    width: 45%;
+    border-radius: 0.5rem;
+    border: 1px solid var(--clr-accent);
+    background-color: var(--clr-accent);
+    color: var(--clr-on-accent);
+}

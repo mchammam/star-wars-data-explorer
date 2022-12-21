@@ -1,0 +1,149 @@
+.navBar {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    width: 100vw;
+    max-width: 100%;
+}
+
+.navToggleBtn {
+    position: relative;
+    margin: 0.75rem 1.3rem;
+    padding: 0;
+    height: 3rem;
+    width: 3rem;
+    border: 0;
+    background-color: transparent;
+    color: transparent;
+    cursor: pointer;
+}
+
+.navToggleBtn[aria-expanded="true"] {
+    position: fixed;
+    margin: 0;
+    z-index: 2;
+    left: 3rem;
+    top: 3rem;
+    animation: navToggleBtn 1.5s;
+}
+
+@keyframes navToggleBtn {
+    0% {
+        opacity: 0;
+    }
+    30% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+.navToggleIcon::before {
+    content: " ";
+    position: absolute;
+    top: 0.9rem;
+    left: 10%;
+    display: block;
+    width: 80%;
+    height: 0.3rem;
+    background-color: var(--clr-on-default);
+    transition: top 1s 1s ease, transform 1s 0s ease;
+}
+.navToggleBtn[aria-expanded="true"] > .navToggleIcon::before {
+    transform: rotateZ(-45deg);
+    top: 1.3rem;
+    transition: top 1s 0.5s ease, transform 1s 1s ease;
+}
+
+.navToggleIcon::after {
+    content: " ";
+    position: absolute;
+    top: 1.8rem;
+    left: 10%;
+    display: block;
+    width: 80%;
+    height: 0.3rem;
+    background-color: var(--clr-on-default);
+    transition: top 1s 1s ease, transform 1s 0s ease;
+}
+.navToggleBtn[aria-expanded="true"] > .navToggleIcon::after {
+    transform: rotateZ(45deg);
+    top: 1.3rem;
+    transition: top 1s 0.5s ease, transform 1s 1s ease;
+}
+
+.nav {
+    position: fixed;
+    z-index: 1;
+    display: grid;
+    align-content: center;
+    place-items: center;
+    height: 100vh;
+    width: 100vw;
+    background-color: var(--clr-default);
+    clip-path: circle(0% at 0 0);
+    opacity: 0;
+    text-align: center;
+    transition: clip-path 1s ease-in-out, opacity 1s;
+}
+.nav[data-visible="true"] {
+    clip-path: circle(141.2% at 0 0);
+    opacity: 1;
+    transition: clip-path 1s ease-in-out, opacity 1s;
+}
+
+.navLink {
+    padding: 1rem;
+    color: var(--clr-on-default);
+    letter-spacing: 0.1rem;
+
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: 0.1s;
+}
+
+.navLink:hover {
+    letter-spacing: 0.15rem;
+    transition: 0.2s;
+}
+
+.navLink.active {
+    color: var(--clr-primary);
+    letter-spacing: 0.15rem;
+    font-size: 1.2rem;
+    font-weight: bold;
+}
+
+@media (min-width: 768px) {
+    .navBar {
+        margin-bottom: 0;
+        margin-top: 3rem;
+        display: flex;
+        justify-content: center;
+        width: 100vw;
+    }
+
+    .navToggleBtn {
+        display: none;
+    }
+
+    .nav {
+        position: relative;
+        grid-auto-flow: column;
+        height: auto;
+        width: auto;
+        background-color: transparent;
+        clip-path: none;
+        opacity: 1;
+    }
+
+    .navLink.active,
+    .navLink.active:hover {
+        border-bottom: 2px solid var(--clr-primary);
+    }
+
+    .navLink:hover {
+        border-bottom: 2px solid var(--clr-on-default);
+    }
+}

@@ -1,0 +1,10 @@
+.pagination {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-block: 1rem 2rem;
+    margin-inline: auto;
+    max-width: 17rem;
+    width: fit-content;
+    text-align: center;
+}
