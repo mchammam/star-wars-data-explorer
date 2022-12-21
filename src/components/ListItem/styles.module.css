@@ -1,0 +1,28 @@
+.listItem {
+    padding: 1rem;
+    width: 17rem;
+    list-style: none;
+    border-radius: 3px;
+    border: 1px solid var(--clr-accent);
+    background-color: var(--clr-accent);
+}
+
+.listItem:hover {
+    border: 1px solid var(--clr-on-accent);
+}
+
+.listItem a {
+    text-decoration: none;
+}
+
+.listItem__title {
+    margin: 0;
+    color: var(--clr-on-accent);
+    text-decoration: none;
+}
+
+.listItem__subtitle {
+    margin: 0;
+    color: var(--clr-on-accent);
+    text-decoration: none;
+}

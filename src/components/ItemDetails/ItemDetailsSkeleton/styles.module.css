@@ -1,0 +1,36 @@
+.item {
+    padding: 1rem;
+    border-radius: 3px;
+    background-color: var(--clr-accent);
+    width: 17rem;
+}
+.line {
+    margin: 0;
+    margin-bottom: 0.5rem;
+    width: 80%;
+    height: 1.3rem;
+    background-color: var(--clr-on-accent);
+    opacity: 0.5;
+    animation: 1.5s skeleton-line infinite ease-in-out;
+}
+.w100 {
+    width: 100%;
+}
+
+.w80 {
+    width: 80%;
+}
+
+.w60 {
+    width: 60%;
+}
+
+.w40 {
+    width: 40%;
+}
+
+@keyframes skeleton-line {
+    50% {
+        opacity: 0;
+    }
+}

@@ -1,0 +1,9 @@
+.label {
+    text-transform: uppercase;
+}
+
+@media (min-width: 768px) {
+    .label {
+        font-weight: bold;
+    }
+}

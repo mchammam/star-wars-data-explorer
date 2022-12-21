@@ -1,0 +1,13 @@
+.itemDetails__box {
+    padding: 1rem;
+    min-width: 17rem;
+    border-radius: 3px;
+    background-color: var(--clr-accent);
+    color: var(--clr-on-accent);
+}
+
+.itemDetails__list {
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}

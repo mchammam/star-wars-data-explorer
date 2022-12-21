@@ -1,0 +1,32 @@
+.itemList {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: left;
+    margin-inline: auto;
+    padding: 0;
+    width: 17rem;
+}
+
+@media (min-width: 37rem) {
+    .itemList {
+        width: 35rem;
+    }
+}
+
+@media (min-width: 55rem) {
+    .itemList {
+        width: 53rem;
+    }
+}
+
+.pagination {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    margin-block: 1rem 2rem;
+    margin-inline: auto;
+    max-width: 17rem;
+    width: fit-content;
+    text-align: center;
+}

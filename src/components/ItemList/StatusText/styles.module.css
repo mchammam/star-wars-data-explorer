@@ -1,0 +1,6 @@
+.statusText {
+    margin: auto;
+    max-width: 17rem;
+    color: var(--clr-on-default);
+    text-align: center;
+}

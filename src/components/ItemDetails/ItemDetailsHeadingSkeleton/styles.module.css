@@ -1,0 +1,15 @@
+.heading {
+  margin: 0;
+  margin-bottom: 0.5rem;
+  height: 1.5rem;
+  width: 10rem;
+  background-color: var(--clr-on-default);
+  opacity: 0.5;
+  animation: 1.5s skeleton-line infinite ease-in-out;
+}
+
+@keyframes skeleton-line {
+  50% {
+    opacity: 0;
+  }
+}

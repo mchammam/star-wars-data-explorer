@@ -1,0 +1,40 @@
+.colorSchemeToggleBtn {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 0.75rem 1.3rem 0.75rem auto;
+    padding: 0.5rem;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 0.2rem;
+    border: 0px solid white;
+    background-color: var(--clr-default);
+    color: var(--clr-on-default);
+    cursor: pointer;
+}
+
+.colorSchemeToggleBtn:hover {
+    background-color: var(--clr-accent);
+}
+
+.darkModeIcon {
+    height: 1.3rem;
+    width: 1.3rem;
+}
+
+.lightModeIcon {
+    height: 1.5rem;
+    width: 1.5rem;
+}
+
+.toggleColorSchemeIcon {
+    stroke: currentColor;
+    fill: currentColor;
+    stroke-width: 0;
+}
+
+@media (min-width: 768px) {
+    .colorSchemeToggleBtn {
+        margin: 0.75rem 1.3rem;
+    }
+}
