@@ -27,6 +27,14 @@ function RenderListItem({
   );
 }
 
+function resourceAPIName(resource: RelatedResources) {
+  if (resource === 'homeworld') return 'planets';
+  if (resource === 'characters') return 'people';
+  if (resource === 'residents') return 'people';
+  if (resource === 'pilots') return 'people';
+  return resource;
+}
+
 function RelatedItemList({
   resource,
   ids
@@ -38,14 +46,6 @@ function RelatedItemList({
   const [limit, setLimit] = useState(() =>
     INITIAL_LIMIT < ids.length ? INITIAL_LIMIT : ids.length
   );
-
-  function resourceAPIName(resource: RelatedResources) {
-    if (resource === 'homeworld') return 'planets';
-    if (resource === 'characters') return 'people';
-    if (resource === 'residents') return 'people';
-    if (resource === 'pilots') return 'people';
-    return resource;
-  }
 
   function handleShowMoreClick() {
     setLimit((prevLimit) => {

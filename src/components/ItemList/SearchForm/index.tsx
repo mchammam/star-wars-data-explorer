@@ -20,9 +20,12 @@ function SearchForm({
 
   return (
     <form className={styles.searchForm} onSubmit={(e) => e.preventDefault()}>
-      <label></label>
+      <label htmlFor="searchInput" className="visually-hidden">
+        Search query
+      </label>
       <input
         className={styles.searchInput}
+        id="searchInput"
         placeholder="Search.."
         type="text"
         value={searchQuery ? searchQuery : ''}
