@@ -25,7 +25,8 @@ function ItemList({ resource }: { resource: APIResource }) {
     hasNextPage,
     isFetchingNextPage,
     items,
-    totalItems
+    totalItems,
+    currentPageNumber
   } = fetchItemList({ resource, searchQuery });
 
   const renderedItemsCount = items?.length ? items?.length : 0;
@@ -67,6 +68,7 @@ function ItemList({ resource }: { resource: APIResource }) {
         hasNextPage={hasNextPage}
         isLoading={isLoading}
         totalItems={totalItems}
+        currentPageNumber={currentPageNumber}
         renderedItemsCount={renderedItemsCount}
       />
     </Page>

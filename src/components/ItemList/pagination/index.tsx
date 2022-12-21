@@ -1,4 +1,4 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import styles from './styles.module.css';
 
 function Pagination({
@@ -7,7 +7,8 @@ function Pagination({
   isLoading,
   hasNextPage,
   totalItems,
-  renderedItemsCount
+  renderedItemsCount,
+  currentPageNumber
 }: {
   fetchNextPage: () => void;
   isFetchingNextPage: boolean;
@@ -15,6 +16,7 @@ function Pagination({
   hasNextPage: boolean | undefined;
   totalItems: number;
   renderedItemsCount: number;
+  currentPageNumber: number;
 }) {
   const paginationRef = useRef(null);
   const isFetchingNextPageRef = useRef<boolean>(false);
@@ -52,7 +54,7 @@ function Pagination({
           </button>
         </>
       ) : (
-        !isLoading && <>No more items.</>
+        !isLoading && currentPageNumber > 1 && <>No more items.</>
       )}
     </div>
   );
