@@ -77,6 +77,9 @@ export function fetchItemList({
 
   const items = data?.pages.map((page) => page.results).flat();
 
+  const currentPageParam = data?.pageParams.at(-1) as number | undefined;
+  const currentPageNumber = currentPageParam ? currentPageParam : 1;
+
   return {
     isLoading,
     error,
@@ -84,6 +87,7 @@ export function fetchItemList({
     hasNextPage,
     isFetchingNextPage,
     items,
-    totalItems
+    totalItems,
+    currentPageNumber: currentPageNumber
   };
 }
