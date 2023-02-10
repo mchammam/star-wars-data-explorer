@@ -1,13 +1,15 @@
 import { ChangeEvent } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import styles from './styles.module.css';
+
+type SetURLSearchParams = ReturnType<typeof useSearchParams>[1];
 
 function SearchForm({
   searchParams,
-  setSearchParams
+  setSearchParams,
 }: {
   searchParams: URLSearchParams;
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  setSearchParams: any;
+  setSearchParams: SetURLSearchParams;
 }) {
   const searchQuery = searchParams.get('search')
     ? searchParams.get('search')

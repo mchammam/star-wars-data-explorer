@@ -11,7 +11,7 @@ const SHOW_MORE_ITEMS = 5;
 
 function RenderListItem({
   resource,
-  id
+  id,
 }: {
   resource: APIResource;
   id: string;
@@ -28,66 +28,69 @@ function RenderListItem({
 }
 
 function resourceAPIName(resource: RelatedResources) {
-  if (resource === 'homeworld') return 'planets';
-  if (resource === 'characters') return 'people';
-  if (resource === 'residents') return 'people';
-  if (resource === 'pilots') return 'people';
-  return resource;
+  switch (resource) {
+    case 'homeworld':
+      return 'planets';
+    case 'characters':
+      return 'people';
+    case 'residents':
+      return 'people';
+    case 'pilots':
+      return 'people';
+    default:
+      return resource;
+  }
 }
 
 function RelatedItemList({
   resource,
-  ids
+  ids,
 }: {
   resource: RelatedResources;
   ids: string[];
 }) {
-  const [showCharacters, setShowCharacters] = useState(false);
+  const itemCount = ids.length;
+  const [showItems, setShowItems] = useState(false);
   const [limit, setLimit] = useState(() =>
-    INITIAL_LIMIT < ids.length ? INITIAL_LIMIT : ids.length
+    INITIAL_LIMIT < itemCount ? INITIAL_LIMIT : itemCount
   );
 
   function handleShowMoreClick() {
     setLimit((prevLimit) => {
-      return prevLimit + SHOW_MORE_ITEMS < ids.length
+      return prevLimit + SHOW_MORE_ITEMS < itemCount
         ? prevLimit + SHOW_MORE_ITEMS
-        : ids.length;
+        : itemCount;
     });
   }
-
+  console.log(ids.slice(0, 5));
   return (
     <div>
       <h4>
-        {resource} ({showCharacters && `${limit}/`}
-        {ids.length})
-        {!showCharacters && (
-          <button
-            className="btn btn--sm"
-            onClick={() => setShowCharacters(true)}
-          >
+        {resource} ({showItems && `${limit}/`}
+        {itemCount})
+        {!showItems && (
+          <button className="btn btn--sm" onClick={() => setShowItems(true)}>
             <small>Show</small>
           </button>
         )}
       </h4>
 
-      {showCharacters && (
+      {showItems && (
         <>
           <ul className={styles.itemList}>
-            {ids
-              .filter((id, index) => index < limit)
-              .map((id) => (
-                <RenderListItem
-                  key={resourceAPIName(resource) + id}
-                  resource={resourceAPIName(resource)}
-                  id={id}
-                />
-              ))}
+            {ids.slice(0, limit).map((id) => (
+              <RenderListItem
+                key={resourceAPIName(resource) + id}
+                resource={resourceAPIName(resource)}
+                id={id}
+              />
+            ))}
           </ul>
 
           <p className={styles.pagination}>
-            {limit !== ids.length &&
-              `Currently showing ${limit} of ${ids.length}.`}
-            {limit < ids.length && (
+            {limit !== itemCount &&
+              `Currently showing ${limit} of ${itemCount}.`}
+            {limit < itemCount && (
               <small>
                 <button className="btn" onClick={handleShowMoreClick}>
                   Show more

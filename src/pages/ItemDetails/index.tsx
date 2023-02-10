@@ -6,7 +6,7 @@ import {
   Planet,
   Specie,
   Starship,
-  Vehicle
+  Vehicle,
 } from '../../services/apiTypes';
 import { fetchItemData } from '../../services/api';
 import ItemDetailsHeadingSkeleton from '../../components/ItemDetails/ItemDetailsHeadingSkeleton';
@@ -31,7 +31,7 @@ function ItemDetails({ resource }: { resource: APIResource }) {
   const { isLoading, error, itemData } = fetchItemData({
     resource,
     id,
-    initialData
+    initialData,
   });
 
   if (itemData?.detail === 'Not found')
@@ -70,7 +70,7 @@ function ItemDetails({ resource }: { resource: APIResource }) {
                     starships: (
                       <StarshipDetails itemData={itemData as Starship} />
                     ),
-                    vehicles: <VehicleDetails itemData={itemData as Vehicle} />
+                    vehicles: <VehicleDetails itemData={itemData as Vehicle} />,
                   }[resource]
                 }
               </ul>

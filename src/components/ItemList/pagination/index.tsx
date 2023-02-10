@@ -8,12 +8,12 @@ function Pagination({
   hasNextPage,
   totalItems,
   renderedItemsCount,
-  currentPageNumber
+  currentPageNumber,
 }: {
   fetchNextPage: () => void;
   isFetchingNextPage: boolean;
   isLoading: boolean;
-  hasNextPage: boolean | undefined;
+  hasNextPage?: boolean;
   totalItems: number;
   renderedItemsCount: number;
   currentPageNumber: number;
@@ -24,20 +24,16 @@ function Pagination({
 
   useEffect(() => {
     const observer = new IntersectionObserver(handleIntersection, {
-      threshold: 0.75
+      threshold: 0.75,
     });
 
-    if (paginationRef.current) observer.observe(paginationRef.current);
+    paginationRef.current && observer.observe(paginationRef.current);
 
     return () => observer.disconnect();
   }, []);
 
   function handleIntersection() {
-    if (
-      !isFetchingNextPageRef.current &&
-      window.scrollY > 0 &&
-      window.innerHeight < document.body.offsetHeight
-    ) {
+    if (!isFetchingNextPageRef.current) {
       fetchNextPage();
     }
   }

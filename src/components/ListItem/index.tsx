@@ -3,26 +3,21 @@ import { APIResource } from '../../services/apiTypes';
 import { getIdByURL } from '../../services/getIdByURL';
 import styles from './styles.module.css';
 
-function PlanetsSubtitle({ population }: { population: number | undefined }) {
+function PlanetSubtitle({ population }: { population?: number }) {
   const numberFormat = new Intl.NumberFormat();
 
   return (
     <>
-      {population && numberFormat.format(population) !== 'NaN' ? (
-        <>
-          Population:
-          {population && numberFormat.format(population)}
-        </>
-      ) : (
-        '--'
-      )}
+      {population && numberFormat.format(population) !== 'NaN'
+        ? `Population: ${numberFormat.format(population)}`
+        : '--'}
     </>
   );
 }
 
 function ListItem({
   resource,
-  itemData
+  itemData,
 }: {
   resource: APIResource;
   itemData: {
@@ -50,11 +45,11 @@ function ListItem({
             {
               {
                 films: `Release date: ${itemData.release_date}`,
-                planets: <PlanetsSubtitle population={itemData.population} />,
+                planets: <PlanetSubtitle population={itemData.population} />,
                 species: itemData.classification,
-                people: itemData.gender,
+                people: itemData.gender !== 'n/a' ? itemData.gender : '--',
                 starships: itemData.manufacturer,
-                vehicles: itemData.manufacturer
+                vehicles: itemData.manufacturer,
               }[resource]
             }
           </small>

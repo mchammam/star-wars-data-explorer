@@ -88,6 +88,6 @@ export function fetchItemList({
     isFetchingNextPage,
     items,
     totalItems,
-    currentPageNumber: currentPageNumber
+    currentPageNumber
   };
 }
