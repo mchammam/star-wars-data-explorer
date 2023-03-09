@@ -10,7 +10,7 @@ export const apiQueryDefaultOptions = {
   staleTime: ONE_HOUR_MS
 };
 
-export function fetchItemData({
+export function useFetchItemData({
   resource,
   id,
   initialData = undefined
@@ -22,7 +22,7 @@ export function fetchItemData({
   const doFetchData = initialData ? false : true;
 
   const { isLoading, error, data } = useQuery(
-    [`${resource}`, id],
+    [resource, id],
     () =>
       fetch(`${import.meta.env.VITE_API_BASE_URL}/${resource}/${id}`).then(
         (res) => res.json()
@@ -40,7 +40,7 @@ export function fetchItemData({
   };
 }
 
-export function fetchItemList({
+export function useFetchItemList({
   resource,
   searchQuery
 }: {
@@ -60,7 +60,7 @@ export function fetchItemList({
     isFetchingNextPage,
     data
   } = useInfiniteQuery(
-    [`${resource}-List`, searchQuery],
+    ['list', resource, searchQuery],
     ({ pageParam = 1 }) =>
       fetch(
         `${
@@ -72,6 +72,8 @@ export function fetchItemList({
       getNextPageParam: (lastPage) => getNextPageParamFromURL(lastPage.next)
     }
   );
+
+  console.log(['list', resource, searchQuery], 'cache key');
 
   const totalItems = data?.pages[0].count;
 

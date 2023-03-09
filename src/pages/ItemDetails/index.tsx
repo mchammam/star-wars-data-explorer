@@ -8,7 +8,7 @@ import {
   Starship,
   Vehicle,
 } from '../../services/apiTypes';
-import { fetchItemData } from '../../services/api';
+import { useFetchItemData } from '../../services/api';
 import ItemDetailsHeadingSkeleton from '../../components/ItemDetails/ItemDetailsHeadingSkeleton';
 import ItemDetailsSkeleton from '../../components/ItemDetails/ItemDetailsSkeleton/ItemDetailsSkeleton';
 import RelatedResourcesSection from '../../components/ItemDetails/RelatedResourcesSection';
@@ -28,7 +28,7 @@ function ItemDetails({ resource }: { resource: APIResource }) {
   const params = useParams();
   const id = params.id ? params.id : '0';
 
-  const { isLoading, error, itemData } = fetchItemData({
+  const { isLoading, error, itemData } = useFetchItemData({
     resource,
     id,
     initialData,
