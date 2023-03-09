@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { fetchItemList } from '../../services/api';
+import { useFetchItemList } from '../../services/api';
 import ListItem from '../../components/ListItem';
 import ListItemSkeleton from '../../components/ListItemSkeleton';
 import Page from '../../components/Page';
@@ -8,15 +8,15 @@ import SearchForm from '../../components/ItemList/SearchForm';
 import styles from './styles.module.css';
 import { APIResource } from '../../services/apiTypes';
 import StatusText from '../../components/ItemList/StatusText';
+import { useDebounce } from '../../hooks/useDebounce';
 
 const LOADING_SKELETON_COUNT = 5;
 
 function ItemList({ resource }: { resource: APIResource }) {
   const [searchParams, setSearchParams] = useSearchParams();
 
-  const searchQuery = searchParams.get('search')
-    ? searchParams.get('search')
-    : '';
+  const searchQuery = searchParams.get('search') ?? '';
+  const debouncedSearchQuery = useDebounce(searchQuery, 200);
 
   const {
     isLoading,
@@ -26,8 +26,8 @@ function ItemList({ resource }: { resource: APIResource }) {
     isFetchingNextPage,
     items,
     totalItems,
-    currentPageNumber
-  } = fetchItemList({ resource, searchQuery });
+    currentPageNumber,
+  } = useFetchItemList({ resource, searchQuery: debouncedSearchQuery });
 
   const renderedItemsCount = items?.length ? items?.length : 0;
 
