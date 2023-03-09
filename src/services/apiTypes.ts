@@ -1,3 +1,6 @@
+/* eslint-disable camelcase */
+import { z } from 'zod';
+
 export type APIResource =
   | 'films'
   | 'planets'
@@ -5,6 +8,133 @@ export type APIResource =
   | 'people'
   | 'starships'
   | 'vehicles';
+
+export const resourceNotFoundSchema = z.object({
+  detail: z.literal('Not found')
+});
+
+export const filmSchema = z.object({
+  title: z.string(),
+  episode_id: z.number(),
+  opening_crawl: z.string(),
+  director: z.string(),
+  producer: z.string(),
+  release_date: z.date(),
+  species: z.string().array(),
+  starships: z.string().array(),
+  vehicles: z.string().array(),
+  characters: z.string().array(),
+  planets: z.string().array(),
+  url: z.string(),
+  created: z.date(),
+  edited: z.date()
+});
+
+export const peopleSchema = z.object({
+  name: z.string(),
+  birth_year: z.string(),
+  eye_color: z.string(),
+  gender: z.string(),
+  hair_color: z.string(),
+  height: z.number(),
+  mass: z.number(),
+  skin_color: z.string(),
+  homeworld: z.string(),
+  films: z.string().array(),
+  species: z.string().array(),
+  starships: z.string().array(),
+  vehicles: z.string().array(),
+  url: z.string(),
+  created: z.date(),
+  edited: z.date()
+});
+
+export const vehicleSchema = z.object({
+  name: z.string(),
+  model: z.string(),
+  vehicle_class: z.string(),
+  manufacturer: z.string(),
+  length: z.number(),
+  cost_in_credits: z.number(),
+  crew: z.number(),
+  passengers: z.number(),
+  max_atmosphering_speed: z.number(),
+  cargo_capacity: z.number(),
+  consumables: z.string(),
+  films: z.string().array(),
+  pilots: z.string().array(),
+  url: z.string(),
+  created: z.date(),
+  edited: z.date()
+});
+
+export const specieSchema = z.object({
+  name: z.string(),
+  classification: z.string(),
+  designation: z.string(),
+  average_height: z.number(),
+  average_lifespan: z.number(),
+  eye_colors: z.string(),
+  hair_colors: z.string(),
+  skin_colors: z.string(),
+  language: z.string(),
+  homeworld: z.string(),
+  people: z.string().array(),
+  films: z.string().array(),
+  url: z.string(),
+  created: z.date(),
+  edited: z.date()
+});
+
+export const planetSchema = z.object({
+  name: z.string(),
+  diameter: z.number(),
+  rotation_period: z.number(),
+  orbital_period: z.number(),
+  gravity: z.number(),
+  population: z.number(),
+  climate: z.string(),
+  terrain: z.string(),
+  surface_water: z.number(),
+  residents: z.string().array(),
+  films: z.string().array(),
+  url: z.string(),
+  created: z.date(),
+  edited: z.date()
+});
+
+export const starshipSchema = z.object({
+  name: z.string(),
+  model: z.string(),
+  starship_class: z.string(),
+  manufacturer: z.string(),
+  cost_in_credits: z.number(),
+  length: z.number(),
+  crew: z.number(),
+  passengers: z.number(),
+  max_atmosphering_speed: z.number(),
+  hyperdrive_rating: z.string(),
+  MGLT: z.string(),
+  cargo_capacity: z.number(),
+  consumables: z.string(),
+  films: z.string().array(),
+  pilots: z.string().array(),
+  url: z.string(),
+  created: z.date(),
+  edited: z.date()
+});
+
+export const itemDataSchema = z.union([
+  resourceNotFoundSchema,
+  filmSchema,
+  peopleSchema,
+  vehicleSchema,
+  specieSchema,
+  planetSchema,
+  starshipSchema
+]);
+
+export type ItemData = z.infer<typeof itemDataSchema>;
 
 export type Film = {
   title: string;

@@ -1,5 +1,5 @@
 import { useInfiniteQuery, useQuery } from 'react-query';
-import { APIResource } from './apiTypes';
+import { APIResource, ItemData, itemDataSchema } from './apiTypes';
 
 const ONE_HOUR_MS = 1000 * 60 * 60;
 
@@ -17,7 +17,7 @@ export function useFetchItemData({
 }: {
   resource: APIResource;
   id: string;
-  initialData?: object;
+  initialData?: ItemData;
 }) {
   const doFetchData = initialData ? false : true;
 
@@ -25,7 +25,9 @@ export function useFetchItemData({
     [resource, id],
     () =>
       fetch(`${import.meta.env.VITE_API_BASE_URL}/${resource}/${id}`).then(
-        (res) => res.json()
+        (res) => {
+          return itemDataSchema.parse(res.json());
+        }
       ),
     {
       enabled: doFetchData,
