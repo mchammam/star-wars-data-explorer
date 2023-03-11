@@ -32,8 +32,8 @@ function Pagination({
     return () => observer.disconnect();
   }, []);
 
-  function handleIntersection() {
-    if (!isFetchingNextPageRef.current) {
+  function handleIntersection(entries: IntersectionObserverEntry[]) {
+    if (!isFetchingNextPageRef.current && entries[0].isIntersecting) {
       fetchNextPage();
     }
   }
