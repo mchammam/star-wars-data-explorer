@@ -4,7 +4,7 @@ import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoad
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';
 import ItemDetailsPage from '../../components/ItemDetails/ItemDetailsPage';
 import ItemDetail from '../../components/ItemDetails/ItemDetail';
-import { useFetchPerson } from '../../services/api';
+import { useFetchPerson } from '../../hooks/api/useFetchPerson';
 
 function PersonDetails() {
   const location = useLocation();

@@ -4,7 +4,7 @@ import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoad
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';
 import ItemDetailsPage from '../../components/ItemDetails/ItemDetailsPage';
 import ItemDetail from '../../components/ItemDetails/ItemDetail';
-import { useFetchSpecie } from '../../services/api';
+import { useFetchSpecie } from '../../hooks/api/useFetchSpecie';
 
 function SpecieDetails() {
   const location = useLocation();

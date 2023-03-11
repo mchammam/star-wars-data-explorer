@@ -4,7 +4,7 @@ import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoad
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';
 import ItemDetailsPage from '../../components/ItemDetails/ItemDetailsPage';
 import ItemDetail from '../../components/ItemDetails/ItemDetail';
-import { useFetchStarship } from '../../services/api';
+import { useFetchStarship } from '../../hooks/api/useFetchStarship';
 
 function StarshipDetails() {
   const location = useLocation();

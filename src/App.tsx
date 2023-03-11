@@ -3,7 +3,7 @@ import { QueryClient, QueryClientProvider } from 'react-query';
 import './App.css';
 import TopNavigation from './components/TopNavigation';
 import ItemList from './pages/ItemList';
-import { apiQueryDefaultOptions } from './services/api';
+import { apiQueryDefaultOptions } from './services/apiQueryDefaultOptions';
 import FilmDetails from './pages/ItemDetails/FilmDetails';
 import PlanetDetails from './pages/ItemDetails/PlanetDetails';
 import SpecieDetails from './pages/ItemDetails/SpecieDetails';

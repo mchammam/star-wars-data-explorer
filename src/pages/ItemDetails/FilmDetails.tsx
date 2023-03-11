@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { useFetchFilm } from '../../services/api';
+import { useFetchFilm } from '../../hooks/api/useFetchFilm';
 import RelatedResourcesSection from '../../components/ItemDetails/RelatedResourcesSection';
 import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoadingPage';
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';

@@ -1,5 +1,5 @@
 import { useSearchParams } from 'react-router-dom';
-import { useFetchItemList } from '../../services/api';
+import { useFetchItemList } from '../../hooks/api/useFetchItemList';
 import ListItem from '../../components/ListItem';
 import ListItemSkeleton from '../../components/ListItemSkeleton';
 import Page from '../../components/Page';

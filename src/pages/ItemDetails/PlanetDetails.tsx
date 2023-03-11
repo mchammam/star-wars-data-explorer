@@ -1,5 +1,5 @@
 import { useLocation, useParams } from 'react-router-dom';
-import { useFetchPlanet } from '../../services/api';
+import { useFetchPlanet } from '../../hooks/api/useFetchPlanet';
 import RelatedResourcesSection from '../../components/ItemDetails/RelatedResourcesSection';
 import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoadingPage';
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';

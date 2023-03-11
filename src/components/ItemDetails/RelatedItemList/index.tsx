@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useFetchItemData } from '../../../services/api';
+import { useFetchItem } from '../../../services/useFetchItem';
 import { APIResource } from '../../../services/apiTypes';
 import ListItem from '../../ListItem';
 import ListItemSkeleton from '../../ListItemSkeleton';
@@ -16,7 +16,7 @@ function RenderListItem({
   resource: APIResource;
   id: string;
 }) {
-  const { isLoading, error, itemData } = useFetchItemData({ resource, id });
+  const { isLoading, error, itemData } = useFetchItem({ resource, id });
 
   return (
     <>
