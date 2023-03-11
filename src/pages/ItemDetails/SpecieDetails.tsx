@@ -8,7 +8,7 @@ import { useFetchSpecie } from '../../hooks/api/useFetchSpecie';
 
 function SpecieDetails() {
   const location = useLocation();
-  const initialData = location.state?.data ?? undefined;
+  const initialData = location.state ?? undefined;
 
   const params = useParams();
   const id = params.id ?? '0';

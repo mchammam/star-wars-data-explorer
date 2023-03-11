@@ -8,7 +8,7 @@ import { useFetchPerson } from '../../hooks/api/useFetchPerson';
 
 function PersonDetails() {
   const location = useLocation();
-  const initialData = location.state?.data ?? undefined;
+  const initialData = location.state ?? undefined;
 
   const params = useParams();
   const id = params.id ?? '0';

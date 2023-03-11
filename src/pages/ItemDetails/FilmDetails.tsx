@@ -8,7 +8,7 @@ import ItemDetail from '../../components/ItemDetails/ItemDetail';
 
 function FilmDetails() {
   const location = useLocation();
-  const initialData = location.state?.data ?? undefined;
+  const initialData = location.state ?? undefined;
 
   const params = useParams();
   const id = params.id ?? '0';
