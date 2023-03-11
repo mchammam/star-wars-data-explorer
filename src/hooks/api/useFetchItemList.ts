@@ -6,7 +6,7 @@ export function useFetchItemList({
   searchQuery
 }: {
   resource: APIResource;
-  searchQuery: string | null;
+  searchQuery?: string;
 }) {
   function getNextPageParamFromURL(url: string) {
     if (!url) return undefined;
@@ -27,7 +27,11 @@ export function useFetchItemList({
         `${
           import.meta.env.VITE_API_BASE_URL
         }/${resource}/?search=${searchQuery}&page=${pageParam}`
-      ).then((res) => res.json()),
+      ).then(async (res) => {
+        const jsonRes = await res.json();
+
+        return jsonRes;
+      }),
     {
       keepPreviousData: false,
       getNextPageParam: (lastPage) => getNextPageParamFromURL(lastPage.next)

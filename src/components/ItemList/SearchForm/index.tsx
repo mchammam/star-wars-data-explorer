@@ -1,25 +1,12 @@
-import { ChangeEvent } from 'react';
-import { useSearchParams } from 'react-router-dom';
 import styles from './styles.module.css';
 
-type SetURLSearchParams = ReturnType<typeof useSearchParams>[1];
-
 function SearchForm({
-  searchParams,
-  setSearchParams,
+  searchQuery,
+  setSearchQuery,
 }: {
-  searchParams: URLSearchParams;
-  setSearchParams: SetURLSearchParams;
+  searchQuery: string;
+  setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }) {
-  const searchQuery = searchParams.get('search')
-    ? searchParams.get('search')
-    : '';
-
-  function handleSearchInputChange(e: ChangeEvent<HTMLInputElement>) {
-    setSearchParams({ search: e.target.value });
-    if (e.target.value === '') setSearchParams();
-  }
-
   return (
     <form className={styles.searchForm} onSubmit={(e) => e.preventDefault()}>
       <label htmlFor="searchInput" className="visually-hidden">
@@ -30,8 +17,8 @@ function SearchForm({
         id="searchInput"
         placeholder="Search.."
         type="text"
-        value={searchQuery ? searchQuery : ''}
-        onChange={(e) => handleSearchInputChange(e)}
+        value={searchQuery}
+        onChange={(e) => setSearchQuery(e.target.value)}
       />
     </form>
   );

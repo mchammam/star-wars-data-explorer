@@ -1,8 +1,8 @@
 import { useState } from 'react';
 import { useFetchItem } from '../../../hooks/api/useFetchItem';
 import { APIResource } from '../../../services/apiTypes';
-import ListItem from '../../ListItem';
-import ListItemSkeleton from '../../ListItemSkeleton';
+import ListItem from '../../ListItems/ListItem';
+import ListItemSkeleton from '../../ListItems/ListItemSkeleton';
 import { RelatedResources } from '../RelatedResourcesSection';
 import styles from './styles.module.css';
 
