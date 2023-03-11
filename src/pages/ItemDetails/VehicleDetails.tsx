@@ -19,7 +19,7 @@ function VehicleDetails() {
   });
 
   if (error instanceof Error)
-    return <ItemDetailsErrorPage error={error} resource="starships" />;
+    return <ItemDetailsErrorPage error={error} resource="vehicles" />;
 
   if (isLoading) return <ItemDetailsLoadingPage />;
 

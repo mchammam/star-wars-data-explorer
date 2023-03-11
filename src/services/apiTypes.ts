@@ -32,8 +32,16 @@ export const personSchema = z.object({
   eye_color: z.string(),
   gender: z.string(),
   hair_color: z.string(),
-  height: z.string().transform((val) => parseInt(val)),
-  mass: z.string().transform((val) => parseInt(val)),
+  height: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  mass: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
   skin_color: z.string(),
   homeworld: z.string(),
   films: z.string().array(),
@@ -50,12 +58,28 @@ export const vehicleSchema = z.object({
   model: z.string(),
   vehicle_class: z.string(),
   manufacturer: z.string(),
-  length: z.string().transform((val) => parseInt(val)),
-  cost_in_credits: z.string().transform((val) => parseInt(val)),
-  crew: z.string().transform((val) => parseInt(val)),
-  passengers: z.string().transform((val) => parseInt(val)),
-  max_atmosphering_speed: z.string().transform((val) => parseInt(val)),
-  cargo_capacity: z.string().transform((val) => parseInt(val)),
+  length: z.union([z.number(), z.string().transform((val) => parseInt(val))]),
+  cost_in_credits: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  crew: z.union([z.number(), z.string().transform((val) => parseInt(val))]),
+  passengers: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  max_atmosphering_speed: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  cargo_capacity: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
   consumables: z.string(),
   films: z.string().array(),
   pilots: z.string().array(),
@@ -68,8 +92,16 @@ export const specieSchema = z.object({
   name: z.string(),
   classification: z.string(),
   designation: z.string(),
-  average_height: z.string().transform((val) => parseInt(val)),
-  average_lifespan: z.string().transform((val) => parseInt(val)),
+  average_height: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  average_lifespan: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
   eye_colors: z.string(),
   hair_colors: z.string(),
   skin_colors: z.string(),
@@ -84,14 +116,38 @@ export const specieSchema = z.object({
 
 export const planetSchema = z.object({
   name: z.string(),
-  diameter: z.string().transform((val) => parseInt(val)),
-  rotation_period: z.string().transform((val) => parseInt(val)),
-  orbital_period: z.string().transform((val) => parseInt(val)),
-  gravity: z.string().transform((val) => parseInt(val)),
-  population: z.string().transform((val) => parseInt(val)),
+  diameter: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  rotation_period: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  orbital_period: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  gravity: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  population: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
   climate: z.string(),
   terrain: z.string(),
-  surface_water: z.string().transform((val) => parseInt(val)),
+  surface_water: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
   residents: z.string().array(),
   films: z.string().array(),
   url: z.string(),
@@ -104,14 +160,38 @@ export const starshipSchema = z.object({
   model: z.string(),
   starship_class: z.string(),
   manufacturer: z.string(),
-  cost_in_credits: z.string().transform((val) => parseInt(val)),
-  length: z.string().transform((val) => parseInt(val)),
-  crew: z.string().transform((val) => parseInt(val)),
-  passengers: z.string().transform((val) => parseInt(val)),
-  max_atmosphering_speed: z.string().transform((val) => parseInt(val)),
+  cost_in_credits: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  length: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  crew: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  passengers: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
+  max_atmosphering_speed: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
   hyperdrive_rating: z.string(),
   MGLT: z.string(),
-  cargo_capacity: z.string().transform((val) => parseInt(val)),
+  cargo_capacity: z.union([
+    z.nan(),
+    z.number(),
+    z.string().transform((val) => parseInt(val))
+  ]),
   consumables: z.string(),
   films: z.string().array(),
   pilots: z.string().array(),

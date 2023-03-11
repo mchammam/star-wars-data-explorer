@@ -21,7 +21,11 @@ export function useFetchItem({
 
           const jsonRes = await res.json();
 
-          return itemDataSchema.parse(jsonRes);
+          const safeParsedData = itemDataSchema.safeParse(jsonRes);
+
+          if (!safeParsedData.success) throw new Error('Data was not valid');
+
+          return safeParsedData.data;
         }
       ),
     {
