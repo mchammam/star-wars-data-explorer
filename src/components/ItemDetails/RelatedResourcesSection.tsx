@@ -1,4 +1,4 @@
-import { APIResource } from '../../services/apiTypes';
+import { APIResource, ItemData } from '../../services/apiTypes';
 import { getIdByURL } from '../../services/getIdByURL';
 import RelatedItemList from './RelatedItemList';
 
@@ -17,11 +17,7 @@ function getIdsFromURLS(URLS: string[] | string) {
   }
 }
 
-function RelatedResourcesSection({
-  itemData
-}: {
-  itemData: { RelatedResourcesType: string[] | string };
-}) {
+function RelatedResourcesSection({ itemData }: { itemData: ItemData }) {
   const relatedResources: RelatedResources[] = [
     'films',
     'homeworld',
@@ -32,7 +28,7 @@ function RelatedResourcesSection({
     'characters',
     'residents',
     'starships',
-    'vehicles'
+    'vehicles',
   ];
 
   return (
