@@ -13,7 +13,7 @@ function useSearchQueryParams() {
     if (searchQuery === '') setSearchParams();
   }, [searchQuery]);
 
-  const debouncedSearchQuery = useDebounce(searchQuery, 200);
+  const debouncedSearchQuery = useDebounce(searchQuery, 250);
 
   return { searchQuery, debouncedSearchQuery, setSearchQuery };
 }
