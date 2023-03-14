@@ -9,8 +9,11 @@ function useSearchQueryParams() {
   );
 
   useEffect(() => {
+    if (searchQuery === '') {
+      setSearchParams();
+      return;
+    }
     setSearchParams({ search: searchQuery });
-    if (searchQuery === '') setSearchParams();
   }, [searchQuery]);
 
   const debouncedSearchQuery = useDebounce(searchQuery, 250);
