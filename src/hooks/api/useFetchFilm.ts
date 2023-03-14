@@ -14,8 +14,7 @@ export function useFetchFilm({
     initialData
   });
 
-  if (isLoading || error) return { isLoading, error };
-
+  if (itemData === undefined) return { isLoading, error, itemData };
   const safeParsedData = filmSchema.safeParse(itemData);
 
   if (!safeParsedData.success) return { error: Error('Data was not valid') };

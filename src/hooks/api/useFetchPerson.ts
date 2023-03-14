@@ -14,7 +14,7 @@ export function useFetchPerson({
     initialData
   });
 
-  if (isLoading || error) return { isLoading, error };
+  if (itemData === undefined) return { isLoading, error, itemData };
 
   const safeParsedData = personSchema.safeParse(itemData);
 
