@@ -1,55 +1,17 @@
-import { useState } from 'react';
-import { useFetchItem } from '../../../hooks/api/useFetchItem';
-import { APIResource } from '../../../services/apiTypes';
-import ListItem from '../../ListItems/ListItem';
-import ListItemSkeleton from '../../ListItems/ListItemSkeleton';
-import { RelatedResources } from '../RelatedResourcesSection';
+import { ReactElement, useState } from 'react';
 import styles from './styles.module.css';
 
 const INITIAL_LIMIT = 5;
 const SHOW_MORE_ITEMS = 5;
 
-function RenderListItem({
-  resource,
-  id,
-}: {
-  resource: APIResource;
-  id: string;
-}) {
-  const { isLoading, error, itemData } = useFetchItem({ resource, id });
-
-  return (
-    <>
-      {error && `Error: ${error}`}
-      {isLoading && <ListItemSkeleton />}
-      {itemData && <ListItem resource={resource} itemData={itemData} />}
-    </>
-  );
-}
-
-function resourceAPIName(resource: RelatedResources) {
-  switch (resource) {
-    case 'homeworld':
-      return 'planets';
-    case 'characters':
-      return 'people';
-    case 'residents':
-      return 'people';
-    case 'pilots':
-      return 'people';
-    default:
-      return resource;
-  }
-}
-
 function RelatedItemList({
-  resource,
-  ids,
+  header,
+  items,
 }: {
-  resource: RelatedResources;
-  ids: string[];
+  header: ReactElement;
+  items: ReactElement[];
 }) {
-  const itemCount = ids.length;
+  const itemCount = items.length;
   const [showItems, setShowItems] = useState(false);
   const [limit, setLimit] = useState(() =>
     INITIAL_LIMIT < itemCount ? INITIAL_LIMIT : itemCount
@@ -62,11 +24,13 @@ function RelatedItemList({
         : itemCount;
     });
   }
-  console.log(ids.slice(0, 5));
+
+  if (itemCount === 0) return <></>;
+
   return (
     <div>
       <h4>
-        {resource} ({showItems && `${limit}/`}
+        {header} ({showItems && `${limit}/`}
         {itemCount})
         {!showItems && (
           <button className="btn btn--sm" onClick={() => setShowItems(true)}>
@@ -78,13 +42,7 @@ function RelatedItemList({
       {showItems && (
         <>
           <ul className={styles.itemList}>
-            {ids.slice(0, limit).map((id) => (
-              <RenderListItem
-                key={resourceAPIName(resource) + id}
-                resource={resourceAPIName(resource)}
-                id={id}
-              />
-            ))}
+            {items.slice(0, limit).map((item) => item)}
           </ul>
 
           <p className={styles.pagination}>

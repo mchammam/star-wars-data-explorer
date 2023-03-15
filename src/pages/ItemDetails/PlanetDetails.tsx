@@ -1,10 +1,10 @@
 import { useLocation, useParams } from 'react-router-dom';
 import { useFetchPlanet } from '../../hooks/api/useFetchPlanet';
-import RelatedResourcesSection from '../../components/ItemDetails/RelatedResourcesSection';
 import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoadingPage';
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';
 import ItemDetailsPage from '../../components/ItemDetails/ItemDetailsPage';
 import ItemDetail from '../../components/ItemDetails/ItemDetail';
+import PlanetRelatedResources from '../../components/ItemDetails/PlanetRelatedResources';
 
 function PlanetDetails() {
   const location = useLocation();
@@ -30,7 +30,7 @@ function PlanetDetails() {
   return (
     <ItemDetailsPage
       header={planet.name}
-      relatedResourcesSection={<RelatedResourcesSection itemData={planet} />}
+      RelatedItemListSection={<PlanetRelatedResources planet={planet} />}
     >
       <ItemDetail
         label="Population"

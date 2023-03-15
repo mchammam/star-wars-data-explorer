@@ -7,20 +7,29 @@ function ListItem({
   title,
   subtitle,
 }: {
-  linkTo: string;
-  linkState: object;
+  linkTo?: string;
+  linkState?: object;
   title: string;
   subtitle: string;
 }) {
+  const innerContent = (
+    <>
+      <h3 className={styles.listItem__title}>{title}</h3>
+      <p className={styles.listItem__subtitle}>
+        <small>{subtitle}</small>
+      </p>
+    </>
+  );
+
   return (
     <li className={styles.listItem}>
-      <Link to={linkTo} state={linkState}>
-        <h3 className={styles.listItem__title}>{title}</h3>
-
-        <p className={styles.listItem__subtitle}>
-          <small>{subtitle}</small>
-        </p>
-      </Link>
+      {linkTo ? (
+        <Link to={linkTo} state={linkState}>
+          {innerContent}
+        </Link>
+      ) : (
+        innerContent
+      )}
     </li>
   );
 }

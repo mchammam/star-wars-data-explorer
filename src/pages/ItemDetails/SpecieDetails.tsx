@@ -1,10 +1,10 @@
 import { useLocation, useParams } from 'react-router-dom';
-import RelatedResourcesSection from '../../components/ItemDetails/RelatedResourcesSection';
 import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoadingPage';
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';
 import ItemDetailsPage from '../../components/ItemDetails/ItemDetailsPage';
 import ItemDetail from '../../components/ItemDetails/ItemDetail';
 import { useFetchSpecie } from '../../hooks/api/useFetchSpecie';
+import SpecieRelatedResources from '../../components/ItemDetails/SpecieRelatedResources';
 
 function SpecieDetails() {
   const location = useLocation();
@@ -30,7 +30,7 @@ function SpecieDetails() {
   return (
     <ItemDetailsPage
       header={specie.name}
-      relatedResourcesSection={<RelatedResourcesSection itemData={specie} />}
+      RelatedItemListSection={<SpecieRelatedResources specie={specie} />}
     >
       <ItemDetail label="Classification" value={specie.classification} />
       <ItemDetail label="Language" value={specie.language} />

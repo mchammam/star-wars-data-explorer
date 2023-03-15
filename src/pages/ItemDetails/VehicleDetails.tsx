@@ -1,10 +1,10 @@
 import { useLocation, useParams } from 'react-router-dom';
-import RelatedResourcesSection from '../../components/ItemDetails/RelatedResourcesSection';
 import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoadingPage';
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';
 import ItemDetailsPage from '../../components/ItemDetails/ItemDetailsPage';
 import ItemDetail from '../../components/ItemDetails/ItemDetail';
 import { useFetchVehicle } from '../../hooks/api/useFetchVehicle';
+import VehicleRelatedResources from '../../components/ItemDetails/VehicleRelatedResources';
 
 function VehicleDetails() {
   const location = useLocation();
@@ -30,7 +30,7 @@ function VehicleDetails() {
   return (
     <ItemDetailsPage
       header={vehicle.name}
-      relatedResourcesSection={<RelatedResourcesSection itemData={vehicle} />}
+      RelatedItemListSection={<VehicleRelatedResources vehicle={vehicle} />}
     >
       <ItemDetail label="Manufacturer" value={vehicle.manufacturer} />
       <ItemDetail label="Model" value={vehicle.model} />

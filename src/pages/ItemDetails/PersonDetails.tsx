@@ -1,10 +1,10 @@
 import { useLocation, useParams } from 'react-router-dom';
-import RelatedResourcesSection from '../../components/ItemDetails/RelatedResourcesSection';
 import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoadingPage';
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';
 import ItemDetailsPage from '../../components/ItemDetails/ItemDetailsPage';
 import ItemDetail from '../../components/ItemDetails/ItemDetail';
 import { useFetchPerson } from '../../hooks/api/useFetchPerson';
+import PersonRelatedResources from '../../components/ItemDetails/PersonRelatedResources';
 
 function PersonDetails() {
   const location = useLocation();
@@ -30,7 +30,7 @@ function PersonDetails() {
   return (
     <ItemDetailsPage
       header={person.name}
-      relatedResourcesSection={<RelatedResourcesSection itemData={person} />}
+      RelatedItemListSection={<PersonRelatedResources person={person} />}
     >
       <ItemDetail label="Name" value={person.name} />
       <ItemDetail label="Gender" value={person.gender} />

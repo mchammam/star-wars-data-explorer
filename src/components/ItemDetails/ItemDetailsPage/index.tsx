@@ -4,11 +4,11 @@ import styles from './styles.module.css';
 
 function ItemDetailsPage({
   header,
-  relatedResourcesSection,
+  RelatedItemListSection,
   children,
 }: {
   header: ReactNode;
-  relatedResourcesSection: ReactNode;
+  RelatedItemListSection: ReactNode;
   children: ReactNode;
 }) {
   return (
@@ -18,7 +18,7 @@ function ItemDetailsPage({
           <ul className={styles.itemDetails__list}>{children}</ul>
         </div>
 
-        {relatedResourcesSection}
+        {RelatedItemListSection}
       </>
     </Page>
   );

@@ -1,10 +1,10 @@
 import { useLocation, useParams } from 'react-router-dom';
-import RelatedResourcesSection from '../../components/ItemDetails/RelatedResourcesSection';
 import ItemDetailsLoadingPage from '../../components/ItemDetails/ItemDetailsLoadingPage';
 import ItemDetailsErrorPage from '../../components/ItemDetails/ItemDetailsErrorPage';
 import ItemDetailsPage from '../../components/ItemDetails/ItemDetailsPage';
 import ItemDetail from '../../components/ItemDetails/ItemDetail';
 import { useFetchStarship } from '../../hooks/api/useFetchStarship';
+import StarshipRelatedResources from '../../components/ItemDetails/StarshipRelatedResources';
 
 function StarshipDetails() {
   const location = useLocation();
@@ -30,7 +30,7 @@ function StarshipDetails() {
   return (
     <ItemDetailsPage
       header={starship.name}
-      relatedResourcesSection={<RelatedResourcesSection itemData={starship} />}
+      RelatedItemListSection={<StarshipRelatedResources starship={starship} />}
     >
       <ItemDetail label="Manufacturer" value={starship.manufacturer} />
       <ItemDetail label="Model" value={starship.model} />

@@ -12,19 +12,18 @@
 
 .listItem a {
     display: block;
-    padding: 1rem;
     height: 100%;
     text-decoration: none;
 }
 
 .listItem__title {
-    margin: 0;
+    margin: 1rem 1rem 0 1rem;
     color: var(--clr-on-accent);
     text-decoration: none;
 }
 
 .listItem__subtitle {
-    margin: 0;
+    margin: 0 1rem 1rem 1rem;
     color: var(--clr-on-accent);
     text-decoration: none;
 }
